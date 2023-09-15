@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/chort/chort1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/chort/chort2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ran_chort/rchort2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/chort/dedchort.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ran_chort/rchort1.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 21.0238
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "ran",
+"speed": 10.0
+} ]
+
+[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+scale = Vector2( 1.5, 1.5 )
+z_index = -2
+collision_layer = 2
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="direction" type="Node2D" parent="."]
+
+[node name="DamageArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource( 2 )
+
+[node name="damage_timer" type="Timer" parent="."]
+wait_time = 0.08
+autostart = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.8147e-06, 0 )
+scale = Vector2( 1.6, 1.6 )
+
+[node name="Chort1" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -7.753 )
+scale = Vector2( 4.8, 4.8 )
+frames = SubResource( 3 )
+animation = "New Anim"
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

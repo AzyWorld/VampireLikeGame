@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/spells and prefabs/Stars.gd" type="Script" id=1]
+
+[node name="Starfall" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="cd" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="cd" to="." method="_on_cd_timeout"]

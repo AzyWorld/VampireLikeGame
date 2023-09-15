@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="Line2D" type="Line2D" groups=["line"]]
+z_index = -1
+default_color = Color( 0.686275, 0.686275, 0.686275, 0.713726 )

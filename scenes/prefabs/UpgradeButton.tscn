@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://sprites/font/Krivulya Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=1]
+resource_name = "upgrades"
+script/source = "extends Button
+
+var upgrade = []
+var param = []
+var obj
+var descr = \"\"
+var next = 0
+var cur = 0
+"
+
+[node name="UpgradeButton" type="Button" groups=["ub"]]
+margin_left = -48.0
+margin_top = -24.0
+margin_right = 48.0
+margin_bottom = 24.0
+focus_mode = 0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+script = SubResource( 1 )

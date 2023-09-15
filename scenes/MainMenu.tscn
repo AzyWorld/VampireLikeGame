@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://sprites/font/Krivulya Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "menu"
+script/source = "extends Control
+
+
+func _on_Play_pressed():
+	get_tree().change_scene(\"res://scenes/Main.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="Play" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.414815
+anchor_right = 0.5
+anchor_bottom = 0.414815
+margin_left = -88.0
+margin_top = -32.0
+margin_right = 88.0
+margin_bottom = 32.0
+theme = ExtResource( 1 )
+text = "Играть"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.0333333
+anchor_top = 0.0148148
+anchor_right = 0.966667
+anchor_bottom = 0.162667
+margin_bottom = 0.32
+custom_fonts/font = SubResource( 2 )
+text = "VampireLike"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/new_theme.tres" type="Theme" id=1]
+
+[node name="Choice Button" type="Button" groups=["cb"]]
+margin_right = 128.0
+margin_bottom = 48.0
+theme = ExtResource( 1 )
+text = "Абоба"
